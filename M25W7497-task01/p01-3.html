@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習1-3 硬貨の枚数計算 学籍番号：M25W7497 </title>
+</head>
+<body>
+
+<script>
+    let money = parseInt(window.prompt("支払い金額を入力してください"));
+
+    let coin500 = parseInt(money / 500);
+    money = money % 500;
+
+    let coin100 = parseInt(money / 100);
+    money = money % 100;
+
+    let coin50 = parseInt(money / 50);
+    money = money % 50;
+
+    let coin10 = parseInt(money / 10);
+    money = money % 10;
+
+    let coin5 = parseInt(money / 5);
+    money = money % 5;
+
+    let coin1 = money;
+
+    window.alert("500円：" + coin500 + "枚, 100円：" + coin100 + "枚, 50円：" + coin50 + "枚, 10円：" + coin10 + "枚, 5円：" + coin5 + "枚, 1円：" + coin1 + "枚");
+</script>
+
+</body>
+</html>
