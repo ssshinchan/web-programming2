@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習2-4 じゃんけんゲーム 学籍番号： M25W7497 </title>
+</head>
+<body>
+<script>
+    const computerHand = parseInt(Math.random() * 3) + 1;
+
+    let playerInput = window.prompt("じゃんけんをしましょう！\n1:グー, 2:チョキ, 3:パー を入力してください");
+
+    const playerHand = Number(playerInput);
+
+    if (playerHand !== 1 && playerHand !== 2 && playerHand !== 3) {
+        window.alert("無効な入力です。1, 2, 3のいずれかを入力してください。");
+    } else {
+        const handName = ["", "グー", "チョキ", "パー"];
+
+        let resultMessage = "あなた: " + handName[playerHand] + "\n";
+        resultMessage += "コンピュータ: " + handName[computerHand] + "\n\n";
+
+        if (playerHand === computerHand) {
+            resultMessage += "引き分けです！";
+        } else if (
+            (playerHand === 1 && computerHand === 2) ||
+            (playerHand === 2 && computerHand === 3) ||
+            (playerHand === 3 && computerHand === 1)
+        ) {
+            resultMessage += "あなたの勝ちです！";
+        } else {
+            resultMessage += "あなたの負けです！";
+        }
+
+        window.alert(resultMessage);
+    }
+</script>
+</body>
+</html>

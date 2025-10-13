@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習2-2 成績判定 学籍番号： M25W7497 </title>
+</head>
+<body>
+<script>
+    let computer = window.prompt("コンピュータの点数を入力してください");
+    let database = window.prompt("データベースの点数を入力してください");
+    
+    computer = Number(computer);
+    database = Number(database);
+    
+    if (computer >= 60) {
+        if (database >= 60) {
+            window.alert("コンピュータとデータベースどちらもよくできました！");
+        } else {
+            window.alert("データベースはがんばりましょう");
+        }
+    } else {
+        if (database >= 60) {
+            window.alert("コンピュータはがんばりましょう");
+        } else {
+            window.alert("どちらもがんばりましょう");
+        }
+    }
+</script>
+</body>
+</html>
