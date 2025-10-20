@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>課題3-3 数当てゲーム 学籍番号：M25W7497 </title>
+</head>
+<body>
+  <h1>数当てゲーム</h1>
+  <button onclick="guessNumber()">数を当てる</button>
+
+  <script>
+    const answer = parseInt(Math.random() * 100) + 1;
+
+    let count = 0;
+
+    function guessNumber() {
+      const userInput = window.prompt("1から100の数を入力してください:");
+
+      if (userInput === null) {
+        return;
+      }
+
+      const guess = parseInt(userInput);
+
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        console.log("1から100の数を入力してください");
+        return;
+      }
+
+      count++;
+
+      if (guess === answer) {
+        console.log("正解です(" + count + "回目)");
+      } else if (guess > answer) {
+        console.log("それより小さい数です(" + count + "回目)");
+      } else {
+        console.log("それより大きい数です(" + count + "回目)");
+      }
+    }
+  </script>
+</body>
+</html>

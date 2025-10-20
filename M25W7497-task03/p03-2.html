@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>課題3-2 じゃんけんゲーム関数版 学籍番号：M25W7497 </title>
+</head>
+<body>
+<h1>じゃんけんゲーム関数版</h1>
+
+<script>
+    const GU = 1;
+    const CHOKI = 2;
+    const PA = 3;
+
+    function getPlayerHand() {
+        let playerInput = window.prompt("じゃんけんをしましょう！\n1:グー, 2:チョキ, 3:パー を入力してください");
+        let hand = Number(playerInput);
+
+        if (hand !== GU && hand !== CHOKI && hand !== PA) {
+            window.alert("無効な入力です。1, 2, 3のいずれかを入力してください。");
+            return null;
+        }
+
+        return hand;
+    }
+
+    function judgeWinner(playerHand, computerHand) {
+        if (playerHand === computerHand) {
+            return "引き分けです！";
+        } else if (
+            (playerHand === GU && computerHand === CHOKI) ||
+            (playerHand === CHOKI && computerHand === PA) ||
+            (playerHand === PA && computerHand === GU)
+        ) {
+            return "あなたの勝ちです！";
+        } else {
+            return "あなたの負けです！";
+        }
+    }
+
+    const handName = ["", "グー", "チョキ", "パー"];
+
+    const computerHand = Math.floor(Math.random() * 3) + 1;
+
+    const playerHand = getPlayerHand();
+
+    if (playerHand !== null) {
+        const result = judgeWinner(playerHand, computerHand);
+
+        let resultMessage = "あなた: " + handName[playerHand] + "\n";
+        resultMessage += "コンピュータ: " + handName[computerHand] + "\n\n";
+        resultMessage += result;
+
+        window.alert(resultMessage);
+    }
+</script>
+</body>
+</html>
