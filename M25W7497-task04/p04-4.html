@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習4-4 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h2>演習4-4 オブジェクトを作る関数とメソッド</h2>
+
+<script>
+    function createStudent(id, name, pwd) {
+        let obj = {
+            "id": id,
+            "name": name,
+            "pwd": pwd,
+            auth: function (ID, PWD) {
+                if (this.id === ID && this.pwd === PWD) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        };
+        return obj;
+    };
+
+    let student = createStudent("M25W7497", "瀋普銘", "123456");
+
+    let inputId = prompt("IDを入力してください");
+    let inputPwd = prompt("パスワードを入力してください");
+
+    if (student.auth(inputId, inputPwd)) {
+        alert("認証に成功しました");
+    } else {
+        alert("IDまたはパスワードが違います");
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習4-2 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h2>演習4-2 オブジェクトを作る関数1</h2>
+
+<script>
+    function createStudent(id, name, pwd) {
+        return {
+            id: id,
+            name: name,
+            pwd: pwd
+        };
+    }
+
+    const student = createStudent("M25W7497", "瀋普銘", "123456");
+    console.log(student);
+</script>
+
+</body>
+</html>
