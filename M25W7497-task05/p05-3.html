@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習5-3 BMIの計算 学籍番号:M25W7497 </title>
+</head>
+<body>
+
+<h2>肥満度(BMI)の計算</h2>
+
+<p>身長(cm): <input type="text" id="height"></p>
+<p>体重(kg): <input type="text" id="weight"></p>
+<p>
+    <button onclick="calculateBMI()">計算</button>
+</p>
+<p id="result"></p>
+
+<script>
+    function calculateBMI() {
+        var height = parseFloat(document.getElementById("height").value);
+        var weight = parseFloat(document.getElementById("weight").value);
+
+        var heightM = height / 100;
+        var bmi = weight / (heightM * heightM);
+
+        var diagnosis;
+        if (bmi < 18.5) {
+            diagnosis = "痩身";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            diagnosis = "普通体重";
+        } else {
+            diagnosis = "肥満";
+        }
+
+        document.getElementById("result").innerHTML = "BMI: " + bmi.toFixed(2) + " - " + diagnosis;
+    }
+</script>
+
+</body>
+</html>

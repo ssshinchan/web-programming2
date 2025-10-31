@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習5-4 スライダー 学籍番号：M25W7497 </title>
+</head>
+<body>
+
+<h2>RGBで色を作る</h2>
+
+R: <input type="range" id="r" min="0" max="255" value="0"><br>
+G: <input type="range" id="g" min="0" max="255" value="0"><br>
+B: <input type="range" id="b" min="0" max="255" value="0"><br>
+
+<button onclick="setColor()">RGBを設定</button>
+
+<h3>現在の色は</h3>
+<div id="result"></div>
+
+<script>
+function setColor() {
+    let r = document.getElementById("r").value;
+    let g = document.getElementById("g").value;
+    let b = document.getElementById("b").value;
+    
+    let colorText = "rgb(" + r + "," + g + "," + b + ")";
+    
+    let resultDiv = document.getElementById("result");
+    resultDiv.textContent = colorText;
+    resultDiv.style.backgroundColor = colorText;
+}
+</script>
+
+</body>
+</html>
