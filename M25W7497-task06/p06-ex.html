@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習6-ex 為替計算 学籍番号: M25W7497</title>
+</head>
+<body>
+<h2>為替計算 M25W7497</h2>
+
+本日の為替レート----1ドルは<input type="number" id="exchangeRate"/>円です。<br>
+<h3>為替計算</h3>
+金額：<input type="number" id="amount"/>は<br>
+<input type="button" value="ドル=>円" onclick="calculateUsdToEn()" onchange="clear()"/>
+<span id="usdToEnResult"></span><br>
+<input type="button" value="円=>ドル" onclick="calculateEnToUsd()" onchange="clear()"/>
+<span id="enToUsdResult"></span>
+
+<script>
+    function calculateUsdToEn() {
+        let usd = document.querySelector("#amount").value;
+        let result = document.querySelector("#exchangeRate").value * usd;
+        document.querySelector("#usdToEnResult").textContent = `${usd}$は${result}円`;
+    }
+
+    function calculateEnToUsd() {
+        let en = document.querySelector("#amount").value;
+        let result = document.querySelector("#amount").value / document.querySelector("#exchangeRate").value;
+        document.querySelector("#enToUsdResult").textContent = `${en}円は${result}$`;
+    }
+
+    function clear() {
+        document.querySelector("#usdToEnResult").textContent = "";
+        document.querySelector("#enToUsdResult").textContent = "";
+    }
+</script>
+
+</body>
+</html>

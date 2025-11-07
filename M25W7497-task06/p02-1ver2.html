@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習2-1ver2 成績判定 学籍番号: M25W7497</title>
+
+</head>
+<body>
+<h2>成績判定 M25W7497</h2>
+
+0から100の点数を入力してください。
+<br>
+点数: <input type="number" id="scoreInput" min="0" max="100">
+<button onclick="judgeScore()">成績判定</button>
+<br>
+成績は： <span id="result"></span>
+
+
+<script>
+    function judgeScore() {
+        let score = Number(document.querySelector("#scoreInput").value);
+        let result;
+
+        if (score < 0 || score > 100) {
+            result = "エラー: 点数は0以上100以下で入力してください";
+        } else if (score >= 80) {
+            result = "A判定";
+        } else if (score >= 70) {
+            result = "B判定";
+        } else if (score >= 60) {
+            result = "C判定";
+        } else {
+            result = "D判定";
+        }
+
+        document.querySelector("#result").innerHTML = result;
+    }
+
+</script>
+
+</body>
+</html>

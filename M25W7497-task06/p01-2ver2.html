@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習1-2ver2 四則演算 学籍番号: M25W7497</title>
+
+</head>
+<body>
+<h2>２つの数字の計算をします M25W7497</h2>
+x: <input type="text" id="num1">
+<br>
+y: <input type="text" id="num2">
+<br>
+<input type="button" value="+" onclick="calc('+')">
+<input type="button" value="-" onclick="calc('-')">
+<input type="button" value="×" onclick="calc('×')">
+<input type="button" value="÷" onclick="calc('÷')">
+<br>
+計算結果: <span id="result"></span>
+
+<script>
+    function calc(operation) {
+        let num1 = parseFloat(document.querySelector("#num1").value);
+        let num2 = parseFloat(document.querySelector("#num2").value);
+        let res;
+
+        switch (operation) {
+            case '+':
+                res = num1 + num2;
+                break;
+            case '-':
+                res = num1 - num2;
+                break;
+            case '×':
+                res = num1 * num2;
+                break;
+            case '÷':
+                if (num2 !== 0) {
+                    res = num1 / num2;
+                } else {
+                    res = "エラー";
+                }
+                break;
+            default:
+                res = "NULL";
+        }
+
+        document.querySelector("#result").textContent = `${num1}${operation}${num2}=${res}`;
+    }
+</script>
+
+</body>
+</html>

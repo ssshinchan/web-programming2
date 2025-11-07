@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習3-1ver2 関数の実行 学籍番号: M25W7497</title>
+
+</head>
+<body>
+<h2>関数の実行 M25W7497</h2>
+<p>引数を渡す関数</p>
+
+<button onclick="greet('おはよう')">おはよう</button>
+<br/>
+<br/>
+<button onclick="greet('你好')">你好</button>
+<br/>
+<br/>
+<button onclick="greet('Good Morning')">Good Morning</button>
+<br>
+ボタンを押すと結果を下に表示します<br>
+<span id="result"></span>
+
+<script>
+
+    function greet(message) {
+        document.querySelector("#result").innerHTML = `
+        ************<br>
+        ****挨拶****<br>
+        ************<br>
+        ${message}
+        `;
+    }
+</script>
+
+</body>
+</html>
