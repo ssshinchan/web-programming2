@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習7-2 おみくじ お札は6つ 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h3>おみくじ お札は6つ M25W7497 </h3>
+
+<h3>運勢占い</h3>
+<button onclick="omikuji()">占う</button>
+<p id="result">あなたの運勢は?です</p>
+
+<script>
+    let ofuda = ["大吉", "中吉", "吉", "小吉", "凶", "大凶"];
+
+    function omikuji() {
+        let randomIndex = parseInt(Math.random() * ofuda.length);
+        let result = ofuda[randomIndex];
+        document.getElementById("result").innerHTML = "あなたの運勢は" + result + "です<br>お札：" + ofuda.join("と");
+    }
+</script>
+
+</body>
+</html>

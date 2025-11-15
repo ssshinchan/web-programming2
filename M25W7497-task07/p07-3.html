@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>演習7-3 レストランの注文1 学籍番号:M25W7497 </title>
+</head>
+<body>
+	<h3>レストランの注文1 M25W7497 </h3>
+	
+	<p>メニュー: <span id="menu"></span></p>
+	<button onclick="orderDish()">注文</button>
+	<button onclick="serveDish()">提供</button>
+	<p>注文待ち: <span id="orders"></span></p>
+	<p>提供された料理: <span id="served"></span></p>
+
+	<script>
+		const menu = ['ハンバーグ', 'カレーライス', 'ラーメン', 'パスタ', 'ピザ', '寿司', '天ぷら'];
+		const orders = [];
+
+		document.getElementById('menu').textContent = menu.join(', ');
+
+		function displayOrders() {
+			document.getElementById('orders').textContent = orders.join(', ');
+		}
+
+		function orderDish() {
+			const randomIndex = Math.floor(Math.random() * menu.length);
+			const dish = menu[randomIndex];
+			orders.push(dish);
+			displayOrders();
+		}
+
+		function serveDish() {
+			if (orders.length > 0) {
+				const servedDish = orders.shift();
+				document.getElementById('served').textContent = servedDish;
+				displayOrders();
+			}
+		}
+
+		displayOrders();
+	</script>
+
+</body>
+</html>
