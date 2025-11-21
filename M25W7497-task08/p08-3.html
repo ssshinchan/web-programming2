@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>演習8-3 配列内の最小値 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h3>配列内の最小値を見つける M25W7497 </h3>
+<label>数列(カンマ区切り): <input type="text" name="nums"/></label>
+<button type="button" onclick="findMin()">最小値</button>
+<span data-role="min"></span>
+<script>
+    function findMin() {
+        const inputEl = document.querySelector('input[name="nums"]');
+        const outEl = document.querySelector('span[data-role="min"]');
+        const raw = inputEl.value.trim();
+        if (!raw) {
+            outEl.textContent = '';
+            return;
+        }
+        const parts = raw.split(',');
+        let min = null;
+        for (let i = 0; i < parts.length; i++) {
+            const v = Number(parts[i].trim());
+            if (!Number.isFinite(v)) continue;
+            if (min === null || v < min) min = v;
+        }
+        outEl.textContent = min === null ? '' : String(min);
+    }
+</script>
+</body>
+</html>

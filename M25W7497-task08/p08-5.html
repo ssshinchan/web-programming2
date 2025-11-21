@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>演習8-5 買い物かご 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h3>買い物をします M25W7497 </h3>
+<p><label for="item">品名</label> <input id="item" type="text" name="item"> <label for="qty">個数</label> <input
+        id="qty" type="number" name="qty" min="1">
+    <button type="button" onclick="addCart()">追加</button>
+    <button type="button" onclick="showCart()">表示</button>
+</p>
+<table class="cart"></table>
+<script>
+    let cart = {};
+
+    //入力された品名と個数をオブジェクトに追加
+    function addCart() {
+        const nameEl = document.querySelector('input[name="item"]');
+        const qtyEl = document.querySelector('input[name="qty"]');
+        const name = nameEl.value.trim();
+        const qty = parseInt(qtyEl.value, 10);
+        if (!name || isNaN(qty) || qty <= 0) {
+            return;
+        }
+        if (cart[name]) {
+            cart[name] += qty;
+        } else {
+            cart[name] = qty;
+        }
+        nameEl.value = '';
+        qtyEl.value = '';
+    }
+
+    //買い物かごの中を出力する
+    function showCart() {
+        let rows = '<tr><th scope="col">品名</th><th scope="col">個数</th></tr>';
+        for (const key in cart) {
+            rows += '<tr><td>' + key + '</td><td>' + cart[key] + '</td></tr>';
+        }
+        document.querySelector('table.cart').innerHTML = rows;
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>演習8-2 整数の総和 学籍番号:M25W7497 </title>
+</head>
+<body>
+<h3>整数ＭからＮ(Ｍ&lt;Ｎ)までの数を足す M25W7497 </h3>
+<label>M: <input type="number" name="m" step="1"></label>
+<label>N: <input type="number" name="n" step="1"></label>
+<button type="button" name="calc">計算</button>
+結果: <span data-name="result"></span>
+<script>
+    const mInput = document.querySelector('input[name="m"]');
+    const nInput = document.querySelector('input[name="n"]');
+    const resultSpan = document.querySelector('span[data-name="result"]');
+    const btn = document.querySelector('button[name="calc"]');
+    btn.addEventListener('click', () => {
+        const M = parseInt(mInput.value, 10);
+        const N = parseInt(nInput.value, 10);
+        if (Number.isNaN(M) || Number.isNaN(N)) {
+            resultSpan.textContent = '整数を入力';
+            return;
+        }
+        if (!(M < N)) {
+            resultSpan.textContent = 'M < N を満たす整数を入力';
+            return;
+        }
+        let sum = 0;
+        let i = 0;
+        while (M + i <= N) {
+            sum = sum + (M + i);
+            i = i + 1;
+        }
+        resultSpan.textContent = String(sum);
+    });
+</script>
+</body>
+</html>
