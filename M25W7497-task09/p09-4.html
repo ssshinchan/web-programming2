@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>演習9-4 為替計算 M25W7497</title>
+</head>
+<body>
+	<h2>為替計算 M25W7497</h2>
+
+	<label>本日の為替レート ---- 1ドルは <input type="number" step="0.01" id="rate"> 円です</label>
+	<div>
+		<h3>為替計算</h3>
+		<div>
+			<label for="usd">ドル</label>
+			<input type="number" step="0.01" id="usd" placeholder="ドル">
+			<span id="usdResult"></span>
+		</div>
+		<div>
+			<label for="jpy">円</label>
+			<input type="number" step="0.01" id="jpy" placeholder="円">
+			<span id="jpyResult"></span>
+		</div>
+		<div id="message" style="color: red;"></div>
+	</div>
+
+	<script>
+		const rateInput = document.querySelector('#rate');
+		const usdInput = document.querySelector('#usd');
+		const jpyInput = document.querySelector('#jpy');
+		const usdResult = document.querySelector('#usdResult');
+		const jpyResult = document.querySelector('#jpyResult');
+		const message = document.querySelector('#message');
+
+		function parseRate() {
+			const r = parseFloat(rateInput.value);
+			return Number.isFinite(r) && r > 0 ? r : null;
+		}
+
+		function updateMessage(hasRate) {
+			message.textContent = hasRate ? '' : '為替レートを入力してください';
+		}
+
+		function formatNumber(n) {
+			return n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+		}
+
+		function onUsdInput() {
+			const rate = parseRate();
+			updateMessage(rate !== null);
+			const v = parseFloat(usdInput.value);
+			if (!Number.isFinite(v) || v === 0) {
+				usdResult.textContent = '';
+				return;
+			}
+			if (rate === null) {
+				usdResult.textContent = '';
+				return;
+			}
+			const yen = v * rate;
+			usdResult.textContent = `ドルは${formatNumber(yen)}円です`;
+		}
+
+		function onJpyInput() {
+			const rate = parseRate();
+			updateMessage(rate !== null);
+			const v = parseFloat(jpyInput.value);
+			if (!Number.isFinite(v) || v === 0) {
+				jpyResult.textContent = '';
+				return;
+			}
+			if (rate === null) {
+				jpyResult.textContent = '';
+				return;
+			}
+			const usd = v / rate;
+			jpyResult.textContent = `円は${formatNumber(usd)}ドルです`;
+		}
+
+		rateInput.addEventListener('input', () => {
+			updateMessage(parseRate() !== null);
+			onUsdInput();
+			onJpyInput();
+		});
+		usdInput.addEventListener('input', onUsdInput);
+		jpyInput.addEventListener('input', onJpyInput);
+	</script>
+
+</body>
+</html>

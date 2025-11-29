@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>演習9-3 M25W7497 </title>
+</head>
+<body>
+	<h2>円の円周と面積 その３ M25W7497</h2>
+	<label for="radius">半径：</label><input type="range" id="radius" placeholder="半径" min="0" max="1000" />
+	<div>円周：<span id="circumference"></span></div>
+	<div>面積：<span id="area"></span></div>
+
+
+	<script>
+
+		const radiusInput = document.querySelector('#radius');
+		const circumferenceEl = document.querySelector('#circumference');
+		const areaEl = document.querySelector('#area');
+
+		radiusInput.addEventListener('input', () => {
+			const r = parseFloat(radiusInput.value);
+			if (Number.isNaN(r)) {
+				circumferenceEl.textContent = '';
+				areaEl.textContent = '';
+				return;
+			}
+			const c = 2 * Math.PI * r;
+			const a = Math.PI * r * r;
+			circumferenceEl.textContent = c;
+			areaEl.textContent = a;
+		});
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>演習9-1 M25W7497 </title>
+</head>
+<body>
+	<h2>円の円周と面積 その１ M25W7497</h2>
+	
+	<p>半径：<input type="text" id="radius"></p>
+	<button id="calcCircumference">円周を計算</button>
+	<p id="resultCircumference"></p>
+	<button id="calcArea">面積を計算</button>
+	<p id="resultArea"></p>
+
+	<script>
+		document.querySelector('#calcCircumference').addEventListener('click', function() {
+			const radius = parseFloat(document.querySelector('#radius').value);
+			const circumference = 2 * Math.PI * radius;
+			document.querySelector('#resultCircumference').textContent = '円周：' + circumference;
+		});
+
+		document.querySelector('#calcArea').addEventListener('click', function() {
+			const radius = parseFloat(document.querySelector('#radius').value);
+			const area = Math.PI * radius * radius;
+			document.querySelector('#resultArea').textContent = '面積：' + area;
+		});
+	</script>
+
+</body>
+</html>

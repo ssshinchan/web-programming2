@@ -1,2 +1,2 @@
 - コメントを追加しないでください(既存のコメントを保持)。
-- getElementByIdを使わないで。
+- .getElementById()は使わないでください。すべて，.querySelector ()にしてください
