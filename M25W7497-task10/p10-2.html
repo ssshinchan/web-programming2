@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習10-1 入力部品(2) 学籍番号:M25W7497 </title>
+    <style>
+        table {
+            border: 1px solid gray;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        span {
+            display: inline-block;
+            min-width: 10em;
+        }
+    </style>
+</head>
+<body>
+<h2>入力部品(1) M25W7497</h2>
+<table>
+    <tr>
+        <th>テキストボックス</th>
+        <td><input type="text" id="textbox"></td>
+        <td><span id="textbox_result"></span></td>
+    </tr>
+    <tr>
+        <th>スライダー</th>
+        <td><input type="range" id="range" min="0" max="100" value="100"></td>
+        <td><span id="range_result"></span></td>
+    </tr>
+    <tr>
+        <th>テキストエリア</th>
+        <td><textarea id="tarearea"></textarea></td>
+        <td><span id="tarearea_result"></span></td>
+    </tr>
+    <tr>
+        <th>ラジオボタン</th>
+        <td>
+            <input type="radio" name="sport" value="サッカー"> サッカー
+            <input type="radio" name="sport" value="野球"> 野球
+            <input type="radio" name="sport" value="バレーボール"> バレーボール
+        </td>
+        <td><span id="radiobtn_result"></span></td>
+    </tr>
+    <tr>
+        <th>チェックボックス</th>
+        <td>
+            <input type="checkbox" name="language" value="JavaScript"> JavaScript
+            <input type="checkbox" name="language" value="Python"> Python
+            <input type="checkbox" name="language" value="Rust"> Rust
+        </td>
+        <td><span id="checkbox_result"></span></td>
+    </tr>
+    <tr>
+        <th>メニュー（単一）</th>
+        <td>
+            <select id="select1">
+                <option value="札幌">札幌</option>
+                <option value="仙台">仙台</option>
+                <option value="東京">東京</option>
+            </select>
+        </td>
+        <td><span id="select1_result"></span></td>
+    </tr>
+    <tr>
+        <th>メニュー（複数）</th>
+        <td>
+            <select id="selectm" multiple size="4">
+                <option value="札幌">札幌</option>
+                <option value="函館">函館</option>
+                <option value="旭川">旭川</option>
+                <option value="小樽">小樽</option>
+            </select>
+        </td>
+        <td><span id="selectm_result"></span></td>
+    </tr>
+</table>
+
+<script>
+    document.querySelector("#textbox").addEventListener("input", () => {
+        const value = document.querySelector("#textbox").value;
+        document.querySelector("#textbox_result").textContent = value;
+    });
+
+    document.querySelector("#range").addEventListener("input", () => {
+        const value = document.querySelector("#range").value;
+        document.querySelector("#range_result").textContent = value;
+    });
+
+    document.querySelector("#tarearea").addEventListener("input", () => {
+        const value = document.querySelector("#tarearea").value;
+        document.querySelector("#tarearea_result").textContent = value;
+    });
+
+    document.querySelectorAll('input[name="sport"]').forEach(radio => {
+        radio.addEventListener("change", () => {
+            const checked = document.querySelector('input[name="sport"]:checked');
+            const value = checked ? checked.value : "";
+            document.querySelector("#radiobtn_result").textContent = value;
+        });
+    });
+
+    document.querySelectorAll('input[name="language"]').forEach(checkbox => {
+        checkbox.addEventListener("change", () => {
+            const checkboxes = document.querySelectorAll('input[name="language"]:checked');
+            const values = Array.from(checkboxes).map(cb => cb.value);
+            document.querySelector("#checkbox_result").textContent = values.join(",");
+        });
+    });
+
+    document.querySelector("#select1").addEventListener("change", () => {
+        const value = document.querySelector("#select1").value;
+        document.querySelector("#select1_result").textContent = value;
+    });
+
+    document.querySelector("#selectm").addEventListener("change", () => {
+        const select = document.querySelector("#selectm");
+        const selected = Array.from(select.selectedOptions).map(opt => opt.value);
+        document.querySelector("#selectm_result").textContent = selected.join(",");
+    });
+</script>
+
+</body>
+</html>

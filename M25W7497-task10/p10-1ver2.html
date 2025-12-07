@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習10-1 入力部品(1) 学籍番号:M25W7497 </title>
+    <style>
+        table {
+            border: 1px solid gray;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        span {
+            display: inline-block;
+            min-width: 10em;
+        }
+    </style>
+</head>
+<body>
+<h2>入力部品(1) M25W7497</h2>
+<table>
+    <tr>
+        <th>テキストボックス</th>
+        <td><input type="text" id="textbox"></td>
+        <td>
+            <button id="textbox_btn">VALUE</button>
+        </td>
+        <td><span id="textbox_result"></span></td>
+    </tr>
+    <tr>
+        <th>スライダー</th>
+        <td><input type="range" id="range" min="0" max="100" value="100"></td>
+        <td>
+            <button id="range_btn">VALUE</button>
+        </td>
+        <td><span id="range_result"></span></td>
+    </tr>
+    <tr>
+        <th>テキストエリア</th>
+        <td><textarea id="tarearea"></textarea></td>
+        <td>
+            <button id="tarearea_btn">VALUE</button>
+        </td>
+        <td><span id="tarearea_result"></span></td>
+    </tr>
+    <tr>
+        <th>ラジオボタン</th>
+        <td>
+            <input type="radio" name="sport" value="サッカー"> サッカー
+            <input type="radio" name="sport" value="野球"> 野球
+            <input type="radio" name="sport" value="バレーボール"> バレーボール
+        </td>
+        <td>
+            <button id="radiobtn_btn">VALUE</button>
+        </td>
+        <td><span id="radiobtn_result"></span></td>
+    </tr>
+    <tr>
+        <th>チェックボックス</th>
+        <td>
+            <input type="checkbox" name="language" value="JavaScript"> JavaScript
+            <input type="checkbox" name="language" value="Python"> Python
+            <input type="checkbox" name="language" value="Rust"> Rust
+        </td>
+        <td>
+            <button id="checkbox_btn">VALUE</button>
+        </td>
+        <td><span id="checkbox_result"></span></td>
+    </tr>
+    <tr>
+        <th>メニュー（単一）</th>
+        <td>
+            <select id="select1">
+                <option value="札幌">札幌</option>
+                <option value="仙台">仙台</option>
+                <option value="東京">東京</option>
+            </select>
+        </td>
+        <td>
+            <button id="select1_btn">VALUE</button>
+        </td>
+        <td><span id="select1_result"></span></td>
+    </tr>
+    <tr>
+        <th>メニュー（複数）</th>
+        <td>
+            <select id="selectm" multiple size="4">
+                <option value="札幌">札幌</option>
+                <option value="函館">函館</option>
+                <option value="旭川">旭川</option>
+                <option value="小樽">小樽</option>
+            </select>
+        </td>
+        <td>
+            <button id="selectm_btn">VALUE</button>
+        </td>
+        <td><span id="selectm_result"></span></td>
+    </tr>
+</table>
+
+<script>
+    function getValueFromInput(inputSelector, resultSelector) {
+        const value = document.querySelector(inputSelector).value;
+        document.querySelector(resultSelector).textContent = value;
+    }
+
+    function getValueFromRadioOrCheckbox(name, resultSelector, isCheckbox = false) {
+        if (isCheckbox) {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+            const values = Array.from(checkboxes).map(cb => cb.value);
+            document.querySelector(resultSelector).textContent = values.join(",");
+        } else {
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            const value = checked ? checked.value : "";
+            document.querySelector(resultSelector).textContent = value;
+        }
+    }
+
+    function getValueFromSelect(selectSelector, resultSelector, isMultiple = false) {
+        const select = document.querySelector(selectSelector);
+        if (isMultiple) {
+            const selected = Array.from(select.selectedOptions).map(opt => opt.value);
+            document.querySelector(resultSelector).textContent = selected.join(",");
+        } else {
+            document.querySelector(resultSelector).textContent = select.value;
+        }
+    }
+
+    document.querySelector("#textbox_btn").addEventListener("click", () => {
+        getValueFromInput("#textbox", "#textbox_result");
+    });
+
+    document.querySelector("#range_btn").addEventListener("click", () => {
+        getValueFromInput("#range", "#range_result");
+    });
+
+    document.querySelector("#tarearea_btn").addEventListener("click", () => {
+        getValueFromInput("#tarearea", "#tarearea_result");
+    });
+
+    document.querySelector("#radiobtn_btn").addEventListener("click", () => {
+        getValueFromRadioOrCheckbox("sport", "#radiobtn_result");
+    });
+
+    document.querySelector("#checkbox_btn").addEventListener("click", () => {
+        getValueFromRadioOrCheckbox("language", "#checkbox_result", true);
+    });
+
+    document.querySelector("#select1_btn").addEventListener("click", () => {
+        getValueFromSelect("#select1", "#select1_result");
+    });
+
+    document.querySelector("#selectm_btn").addEventListener("click", () => {
+        getValueFromSelect("#selectm", "#selectm_result", true);
+    });
+</script>
+
+</body>
+</html>
