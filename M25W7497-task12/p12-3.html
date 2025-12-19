@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習12-3 学籍番号:M25W7497 </title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        .list1 {
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid gray;
+            transition: transform 1s, background-color 1s;
+        }
+
+        .list1.active {
+            transform: translateX(40px);
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<h2>マウスを載せると右に出て，マウスを外すと元に戻るリスト M25W7497</h2>
+<ul id="list">
+    <li class="list1">百万遍本校</li>
+    <li class="list1">京都駅前校</li>
+    <li class="list1">東京サテライト</li>
+    <li class="list1">札幌サテライト</li>
+</ul>
+
+<script>
+    const items = document.querySelectorAll('.list1');
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener('mouseenter', function () {
+            this.classList.toggle('active');
+        });
+        items[i].addEventListener('mouseleave', function () {
+            this.classList.toggle('active');
+        });
+    }
+</script>
+
+</body>
+</html>

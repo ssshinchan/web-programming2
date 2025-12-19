@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>演習12-1 学籍番号:M25W7497 </title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        .list1 {
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid gray;
+            transition: transform 1s, background-color 1s;
+            cursor: pointer;
+        }
+
+        .list1.active {
+            transform: translateX(40px);
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+<h2>クリックすると右に出て，またクリックすると元に戻るリスト M25W7497</h2>
+<ul id="list">
+    <li class="list1">百万遍本校</li>
+
+</ul>
+
+<script>
+    const listItem = document.querySelector('.list1');
+
+    listItem.addEventListener('click', function () {
+        this.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
