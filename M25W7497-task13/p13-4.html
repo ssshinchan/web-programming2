@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>演習13-4 学籍番号:M25W7497 </title>
+	<style>
+		canvas {border : 1px solid gray;}
+	</style>
+</head>
+<body>
+	<h3>ランダムな位置に出現する赤色の円が左下に移動する M25W7497</h3>
+	<canvas width="640" height="480"></canvas>
+	<br><button >円を描く</button>
+
+	<script>
+		let circles=[];
+		let timerId=null;
+
+		const canvas = document.querySelector('canvas');
+		const ctx = canvas.getContext('2d');
+		const button = document.querySelector('button');
+
+		button.addEventListener('click', () => {
+			const x = parseInt(Math.random() * 640);
+			const y = parseInt(Math.random() * 480);
+
+			const circle = {x: x, y: y};
+			circles.push(circle);
+
+			if (timerId === null) {
+				timerId = setInterval(() => {
+					ctx.clearRect(0, 0, 640, 480);
+
+					for (let i = 0; i < circles.length; i++) {
+						circles[i].x -= 2;
+						circles[i].y += 2;
+
+						ctx.strokeStyle = 'red';
+						ctx.lineWidth = 20;
+						ctx.beginPath();
+						ctx.arc(circles[i].x, circles[i].y, 50, 0, Math.PI * 2);
+						ctx.stroke();
+					}
+				}, 50);
+			}
+		});
+	</script>
+</body>
+</html>

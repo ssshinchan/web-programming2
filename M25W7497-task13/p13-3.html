@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>演習13-3 学籍番号:M25W7497 </title>
+	<style>
+		canvas {border : 1px solid gray;}
+	</style>
+</head>
+<body>
+	<h3>canvas内に半径50px・線幅10pxの赤色の円をランダムに描く M25W7497</h3>
+	<canvas width="640" height="480"></canvas>
+	<br><button>円を描く</button>
+
+	<script>
+		const canvas = document.querySelector('canvas');
+		const ctx = canvas.getContext('2d');
+		const button = document.querySelector('button');
+
+		button.addEventListener('click', () => {
+			const x = parseInt(Math.random() * 640);
+			const y = parseInt(Math.random() * 480);
+
+			ctx.strokeStyle = 'red';
+			ctx.lineWidth = 20;
+			ctx.beginPath();
+			ctx.arc(x, y, 50, 0, Math.PI * 2);
+			ctx.stroke();
+		});
+	</script>
+</body>
+</html>
