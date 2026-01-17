@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>演習14-2 地図 学籍番号:M25W7497 </title>
+    <style>
+        #mymap {
+            border: 1px solid black;
+            width: 600px;
+            height: 480px;
+        }
+    </style>
+</head>
+<body>
+<div id="mymap">ここに地図を表示する</div>
+
+<!-- API_KEY　は　Googleで取得した値にする -->
+<script src="https://maps.googleapis.com/maps/api/js?key=xxx&callback=initMap" async
+        defer></script>
+<script>
+    function initMap() {
+        const target = document.querySelector("#mymap");
+        const location = {lat: 31.31005855298339, lng: 120.57631036554459};
+        let map = new google.maps.Map(target, {
+            center: location,
+            zoom: 14
+        });
+    }
+
+</script>
+</body>
+</html>

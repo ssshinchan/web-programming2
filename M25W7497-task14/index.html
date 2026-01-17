@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>演習14-1 Ajax 学籍番号:M25W7497 </title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .left-panel {
+            width: 25%;
+            border: 2px solid black;
+        }
+
+        .left-panel ul {
+            list-style-type: none;
+        }
+
+        .left-panel li {
+            cursor: pointer;
+        }
+
+        .right-panel {
+            width: 75%;
+            border: 2px solid black;
+        }
+
+        img {
+            border: 1px solid black;
+            width: 20%;
+            float: left;
+        }
+
+        dl {
+            width: 75%;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-panel">
+        <h2>京都の観光地紹介</h2>
+        <ul>
+            <li data-file="kyoto-0.html">清水寺</li>
+            <li data-file="kyoto-1.html">金閣寺</li>
+            <li data-file="kyoto-2.html">伏見稲荷大社</li>
+            <li data-file="kyoto-3.html">平等院</li>
+        </ul>
+    </div>
+    <div class="right-panel" id="content">
+        <p>左側の観光地をクリックしてください。</p>
+    </div>
+</div>
+
+<script>
+    function loadContent(filename) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', filename, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(xhr.responseText, 'text/html');
+                const body = doc.querySelector('body');
+                const contentDiv = document.querySelector('#content');
+                contentDiv.innerHTML = body.innerHTML;
+            }
+        };
+        xhr.send();
+    }
+
+    document.querySelectorAll('.left-panel li').forEach(function (item) {
+        item.addEventListener('click', function () {
+            const filename = this.getAttribute('data-file');
+            loadContent(filename);
+        });
+    });
+</script>
+
+</body>
+</html>
