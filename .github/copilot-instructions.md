@@ -1,2 +1,4 @@
 - コメントを追加しないでください(既存のコメントを保持)。
 - .getElementById()は使わないでください。すべて，.querySelector ()にしてください
+- forEachは使わないでください。代わりにforを使ってください。
+- htmlファイル内のstyle属性，style要素は使用しない

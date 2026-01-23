@@ -3,20 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>演習10-1 入力部品(1) 学籍番号:M25W7497 </title>
-    <style>
-        table {
-            border: 1px solid gray;
-        }
-
-        th {
-            background-color: lightgray;
-        }
-
-        span {
-            display: inline-block;
-            min-width: 10em;
-        }
-    </style>
+    <link rel="stylesheet" href="css/p10-1ver2.css">
 </head>
 <body>
 <h2>入力部品(1) M25W7497</h2>
@@ -100,45 +87,7 @@
     </tr>
 </table>
 
-<script>
-    document.querySelector("#textbox_btn").addEventListener("click", () => {
-        const value = document.querySelector("#textbox").value;
-        document.querySelector("#textbox_result").textContent = value;
-    });
-
-    document.querySelector("#range_btn").addEventListener("click", () => {
-        const value = document.querySelector("#range").value;
-        document.querySelector("#range_result").textContent = value;
-    });
-
-    document.querySelector("#tarearea_btn").addEventListener("click", () => {
-        const value = document.querySelector("#tarearea").value;
-        document.querySelector("#tarearea_result").textContent = value;
-    });
-
-    document.querySelector("#radiobtn_btn").addEventListener("click", () => {
-        const checked = document.querySelector('input[name="sport"]:checked');
-        const value = checked ? checked.value : "";
-        document.querySelector("#radiobtn_result").textContent = value;
-    });
-
-    document.querySelector("#checkbox_btn").addEventListener("click", () => {
-        const checkboxes = document.querySelectorAll('input[name="language"]:checked');
-        const values = Array.from(checkboxes).map(cb => cb.value);
-        document.querySelector("#checkbox_result").textContent = values.join(",");
-    });
-
-    document.querySelector("#select1_btn").addEventListener("click", () => {
-        const value = document.querySelector("#select1").value;
-        document.querySelector("#select1_result").textContent = value;
-    });
-
-    document.querySelector("#selectm_btn").addEventListener("click", () => {
-        const select = document.querySelector("#selectm");
-        const selected = Array.from(select.selectedOptions).map(opt => opt.value);
-        document.querySelector("#selectm_result").textContent = selected.join(",");
-    });
-</script>
+<script src="js/p10-1ver2.js"></script>
 
 </body>
 </html>
